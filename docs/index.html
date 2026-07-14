@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>payload-test-api-route-handler — In-Process Payload CMS testing</title>
+  <meta name="description"
+    content="Test your Payload CMS v3+ API routes in-process in milliseconds. Zero port conflicts, full auth resolution, and real database transactions.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#logo-grad)" />
+          <path d="M9 10H23M9 16H23M9 22H17" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="21" cy="21" r="2" fill="#00f2fe" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8b5cf6" />
+              <stop offset="1" stop-color="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">payload-test-api-route-handler</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#code-example">Quick Start</a>
+        <a href="https://www.npmjs.com/package/payload-test-api-route-handler" target="_blank" class="npm-link">
+          <svg viewBox="0 0 780 250" fill="currentColor" class="npm-icon">
+            <path
+              d="M240,250 L240,100 L290,100 L290,250 L340,250 L340,0 L0,0 L0,250 L240,250 Z M340,250 L490,250 L490,100 L540,100 L540,250 L590,250 L590,0 L340,0 L340,250 Z M590,250 L740,250 L740,0 L590,0 L590,250 Z M640,100 L690,100 L690,150 L640,150 L640,100 Z" />
+          </svg>
+        </a>
+        <a href="https://github.com/000madz000/payload-test-api-route-handler" target="_blank" class="github-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="github-icon">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge">Payload CMS v3+ Utility</div>
+        <h1 class="hero-title">Test API Routes in <span class="text-gradient">Milliseconds</span></h1>
+        <p class="hero-subtitle">
+          An elegant, in-process Axios tester for Payload CMS. Say goodbye to slow Next.js dev server starts, network
+          overhead, and flaky port conflicts.
+        </p>
+        <div class="hero-actions">
+          <a href="#code-example" class="btn btn-primary">Get Started</a>
+          <a href="https://github.com/000madz000/payload-test-api-route-handler" target="_blank"
+            class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-comparison">
+          <!-- The Slow Way -->
+          <div class="comparison-card slow-way">
+            <div class="card-header">
+              <span class="dot red"></span>
+              <span class="card-title">Traditional Testing</span>
+            </div>
+            <div class="card-body">
+              <div class="cmd-line">pnpm run dev</div>
+              <div class="cmd-output info">▲ Next.js 15.0.0 (Turbo)</div>
+              <div class="cmd-output info">Local server running on port 3000...</div>
+              <div class="cmd-output success">✓ Built in 4.8s</div>
+              <div class="cmd-output warn">⚠️ Port 3000 already in use, trying 3001...</div>
+              <div class="cmd-output">Running tests against localhost:3001...</div>
+              <div class="metric red-text">Time: ~5.2 seconds</div>
+            </div>
+          </div>
+
+          <!-- The Fast Way -->
+          <div class="comparison-card fast-way">
+            <div class="card-header">
+              <span class="dot green"></span>
+              <span class="card-title">In-Process Testing</span>
+            </div>
+            <div class="card-body">
+              <div class="cmd-line">pnpm test</div>
+              <div class="cmd-output success">✓ tests/api.test.ts (8/8 passed)</div>
+              <div class="cmd-output info">🚀 Direct route matched: GET /api/posts/featured</div>
+              <div class="cmd-output info">⚡ Database transaction context propagated</div>
+              <div class="cmd-output success">✓ All tests completed in memory</div>
+              <div class="metric green-text">Time: 12ms (400x faster)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Tested Features, Unleashed Speed</h2>
+        <p class="section-subtitle">Everything you need to test Payload CMS endpoint integrations completely in-memory.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon purple-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+              <line x1="6" y1="6" x2="6.01" y2="6" />
+              <line x1="6" y1="18" x2="6.01" y2="18" />
+            </svg>
+          </div>
+          <h3 class="feature-title">In-Process Routing</h3>
+          <p class="feature-desc">Intercept requests locally and resolve them directly using Payload's sanitized
+            configurations, cutting network overhead entirely.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon blue-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Authentication Resolution</h3>
+          <p class="feature-desc">Pass standard JWT auth headers. The adapter resolves the payload user session and
+            populates <code>req.user</code> automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon green-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Database Transactions</h3>
+          <p class="feature-desc">Ensures real SQLite or PostgreSQL transaction states flow properly into collection
+            hooks, exactly like production environments.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon orange-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Request Mutator Hooks</h3>
+          <p class="feature-desc">Use the <code>requestPatcher</code> hook to modify, inject headers, or mock session
+            parameters right before they reach route handlers.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon cyan-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Fully Type-Safe</h3>
+          <p class="feature-desc">Built native in TypeScript. Autocomplete, interface definitions, and IDE hints make
+            test setup clean and straightforward.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon red-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="22" y1="12" x2="18" y2="12" />
+              <line x1="6" y1="12" x2="2" y2="12" />
+              <line x1="12" y1="6" x2="12" y2="2" />
+              <line x1="12" y1="22" x2="12" y2="18" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Standard Axios Instance</h3>
+          <p class="feature-desc">Configure timeout, headers, retry interceptors, and default status validations
+            directly on a standard Axios client instance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Code / Quick Start -->
+  <section id="code-example" class="code-section">
+    <div class="container">
+      <div class="code-layout">
+        <div class="code-info">
+          <h2 class="section-title">Zero Boilerplate</h2>
+          <p class="section-desc">Setting up tests is as easy as wrapping your standard config with
+            <code>createTesterAxios</code>. It feels just like writing HTTP tests, minus the latency.</p>
+
+          <div class="install-card">
+            <h4 class="install-title">Install Package</h4>
+            <div class="install-tabs">
+              <button class="tab-btn active" data-pm="pnpm">pnpm</button>
+              <button class="tab-btn" data-pm="npm">npm</button>
+              <button class="tab-btn" data-pm="yarn">yarn</button>
+            </div>
+            <div class="install-code-box">
+              <code id="install-cmd">pnpm add -D payload-test-api-route-handler</code>
+              <button class="copy-btn" id="copy-install">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-visual">
+          <div class="ide-frame">
+            <div class="ide-header">
+              <div class="ide-dots">
+                <span class="ide-dot red"></span>
+                <span class="ide-dot yellow"></span>
+                <span class="ide-dot green"></span>
+              </div>
+              <div class="ide-tab">api-route.test.ts</div>
+            </div>
+            <div class="ide-body">
+              <pre><code><span class="keyword">import</span> { describe, it, expect, beforeAll } <span class="keyword">from</span> <span class="string">'vitest'</span>;
+<span class="keyword">import</span> { getPayload } <span class="keyword">from</span> <span class="string">'payload'</span>;
+<span class="keyword">import</span> { buildConfig } <span class="keyword">from</span> <span class="string">'payload'</span>;
+<span class="keyword">import</span> { createTesterAxios } <span class="keyword">from</span> <span class="string">'payload-test-api-route-handler'</span>;
+
+<span class="function">describe</span>(<span class="string">'API Routes'</span>, () => {
+  <span class="keyword">let</span> config;
+
+  <span class="function">beforeAll</span>(<span class="keyword">async</span> () => {
+    config = <span class="keyword">await</span> <span class="function">buildConfig</span>({
+      <span class="comment">// Standard configuration settings...</span>
+      <span class="literal">db</span>: <span class="function">sqliteAdapter</span>({ client: { url: <span class="string">'file::memory:'</span> } }),
+      <span class="literal">secret</span>: <span class="string">'test-secret-at-least-32-chars-long'</span>,
+    });
+    <span class="keyword">await</span> <span class="function">getPayload</span>({ config });
+  });
+
+  <span class="function">it</span>(<span class="string">'performs fast in-memory get requests'</span>, <span class="keyword">async</span> () => {
+    <span class="comment">// 1. Create client instance mapped to your config</span>
+    <span class="keyword">const</span> client = <span class="function">createTesterAxios</span>(config);
+
+    <span class="comment">// 2. Call local endpoints directly</span>
+    <span class="keyword">const</span> res = <span class="keyword">await</span> client.get(<span class="string">'/api/posts/featured'</span>);
+
+    <span class="comment">// 3. Make assertions in milliseconds!</span>
+    <span class="function">expect</span>(res.status).toBe(<span class="number">200</span>);
+    <span class="function">expect</span>(res.data.featured).toBe(<span class="literal">true</span>);
+  });
+});</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container cta-container">
+      <h2 class="cta-title">Upgrade Your Test Velocity</h2>
+      <p class="cta-subtitle">Run your integration suites at the speed of unit tests today.</p>
+      <div class="cta-actions">
+        <a href="https://github.com/000madz000/payload-test-api-route-handler" target="_blank"
+          class="btn btn-primary">View GitHub Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="footer-copy">&copy; 2026 MaDz. Released under the MIT License.</p>
+      <p class="footer-author">Made with ❤️ for the Payload CMS community</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{
+  "name": "payload-test-api-route-handler",
+  "version": "1.0.0",
+  "description": "Test Payload CMS v3+ API route handlers in-process using Axios — no HTTP server needed. Supports auth, transactions, request patching, built-in CRUD endpoints, and custom endpoints.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "payload",
+    "payloadcms",
+    "payload-cms",
+    "test",
+    "testing",
+    "api",
+    "route-handler",
+    "in-process",
+    "axios",
+    "vitest",
+    "jest",
+    "integration-test",
+    "endpoint",
+    "headless-cms"
+  ],
+  "author": "MaDz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/000madz000/payload-test-api-route-handler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/000madz000/payload-test-api-route-handler/issues"
+  },
+  "homepage": "https://github.com/000madz000/payload-test-api-route-handler#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "pnpm lint && tsc",
+    "dev": "tsc --watch",
+    "lint": "pnpm format:check && pnpm lint:eslint && tsc --noEmit",
+    "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.ts\"",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build && pnpm test"
+  },
+  "dependencies": {
+    "axios": "^1.17.0"
+  },
+  "peerDependencies": {
+    "payload": "^3.85.1"
+  },
+  "devDependencies": {
+    "@payloadcms/db-sqlite": "^3.85.1",
+    "@payloadcms/richtext-lexical": "^3.85.1",
+    "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "payload": "^3.85.1",
+    "prettier": "^3.7.4",
+    "typescript": "5.7.3",
+    "vitest": "4.1.8"
+  }
+}
