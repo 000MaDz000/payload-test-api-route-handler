@@ -36,12 +36,12 @@
   "author": "MaDz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/000madz000/payload-test-api-route-handler.git"
+    "url": "git+https://github.com/000MaDz000/payload-test-api-route-handler.git"
   },
   "bugs": {
-    "url": "https://github.com/000madz000/payload-test-api-route-handler/issues"
+    "url": "https://github.com/000MaDz000/payload-test-api-route-handler/issues"
   },
-  "homepage": "https://github.com/000madz000/payload-test-api-route-handler#readme",
+  "homepage": "https://github.com/000MaDz000/payload-test-api-route-handler#readme",
   "engines": {
     "node": ">=18.0.0"
   },

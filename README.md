@@ -245,7 +245,7 @@ Contributions are welcome! Please feel free to open an issue or submit a pull re
 
 ```bash
 # Clone and install
-git clone https://github.com/000madz000/payload-test-api-route-handler.git
+git clone https://github.com/000MaDz000/payload-test-api-route-handler.git
 cd payload-test-api-route-handler
 pnpm install
 
